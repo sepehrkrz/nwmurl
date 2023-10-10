@@ -5,9 +5,9 @@ This library contains utility functions to generate National Water Model data UR
 Developed by CIROH 2023
 ## Usage
 
-1. In the Jupyter Notebook, you can modify the input parameters, such as `start_date`, `end_date`, `fcst_cycle`, `lead_time`, `varinput`, `geoinput`, and `runinput`, to customize the NWM data retrieval.
+1. In the code, you can modify the input parameters, such as `start_date`, `end_date`, `fcst_cycle`, `lead_time`, `varinput`, `geoinput`, and `runinput`, to customize the NWM data retrieval.
 
-2. The code will generate a list of JSON header URLs tailored to your specified parameters using the `urlgennwm.generate_urls` function.
+2. The code will generate a list of JSON header URLs tailored to your specified parameters using the `generate_urls` function.
 
 ## Customize Your Data Retrieval
 - `start_date`: A string representing the starting date in the format \"YYYYMMDDHHMM".

@@ -1,0 +1,1 @@
+from nwmurl.urlgennwm import generate_urls

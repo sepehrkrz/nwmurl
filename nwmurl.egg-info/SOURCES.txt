@@ -1,0 +1,10 @@
+LICENSE.txt
+README.md
+setup.py
+nwmurl/__init__.py
+nwmurl/urlgennwm.py
+nwmurl.egg-info/PKG-INFO
+nwmurl.egg-info/SOURCES.txt
+nwmurl.egg-info/dependency_links.txt
+nwmurl.egg-info/requires.txt
+nwmurl.egg-info/top_level.txt

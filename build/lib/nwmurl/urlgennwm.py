@@ -177,15 +177,8 @@ def select_lead_time(lead_time=None, default=None):
 
 urlbasedict = {
     0: "",
-    1: "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/prod/",
-    2: "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/",
-    3: "https://storage.googleapis.com/national-water-model/",
-    4: "https://storage.cloud.google.com/national-water-model/",
-    5: "gs://national-water-model/",
-    6: "gcs://national-water-model/",
-    7: "https://noaa-nwm-pds.s3.amazonaws.com/",
-    8: "s3://noaa-nwm-pds/",
-    9: "https://ciroh-nwm-zarr-copy.s3.amazonaws.com/national-water-model/",
+    1: "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/national-water-model/",
+    2: "https://ciroh-nwm-zarr-copy.s3.amazonaws.com/national-water-model/",
 }
 
 
@@ -483,23 +476,18 @@ def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput
         lead_time,
     )
     if os.path.exists("filenamelist.txt"):
-        os.remove("filenamelist.txt")
-    if urlbaseinput == 9:
-        with open("filenamelist.txt", "wt") as file:
-            for item in file_list:
-                file.write(f"{item}.json\n")
-    else:
-        with open("filenamelist.txt", "wt") as file:
-            for item in file_list:
-                file.write(f"{item}\n")
+        os.remove("filenamelist.txt")   
+    with open("filenamelist.txt", "wt") as file:
+        for item in file_list:
+            file.write(f"{item}.json\n")
 
-start_date = "202201120000"
-end_date   = "202201130000"
-fcst_cycle = [0,8]
-lead_time = [1,18]
-varinput = 1
-geoinput = 1
-runinput = 1
-urlbaseinput = 2
-meminput = 1
-generate_urls(start_date, end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput)
+# start_date = "202201120000"
+# end_date   = "202201130000"
+# fcst_cycle = [0,8]
+# lead_time = [1,18]
+# varinput = 1
+# geoinput = 1
+# runinput = 1
+# urlbaseinput = 2
+# meminput = 1
+# generate_urls(start_date, end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput)

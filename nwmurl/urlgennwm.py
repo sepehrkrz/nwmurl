@@ -12,38 +12,6 @@ import os
 from functools import partial
 from tqdm import tqdm
 
-# def check_valid_urls(file_list, session=None):
-#     """if not session:
-#         session = requests.Session()"""
-#     t = tqdm(range(len(file_list)))
-#     check_url_part = partial(check_url, t)
-#     """with ThreadPoolExecutor(max_workers=10) as executor:
-#         valid_file_list = list(executor.map(check_url_part, file_list))"""
-#     valid_file_list = [gevent.spawn(check_url_part, file_name) for file_name in file_list]
-#     gevent.joinall(valid_file_list)
-#     return [file.get() for file in valid_file_list if file.get() is not None]
-
-
-# def check_url(t, file):
-#     filename = file.split("/")[-1]
-#     try:
-#         with requests.head(file) as response:
-#             if response.status_code == 200:
-#                 t.set_description(f"Found: {filename}")
-#                 t.update(1)
-#                 t.refresh()
-#                 return file
-#             else:
-#                 t.set_description(f"Not Found: {filename}")
-#                 t.update(1)
-#                 t.refresh()
-#                 return None
-#         #response = session.head(file, timeout=1)
-#     except requests.exceptions.RequestException:
-#         t.set_description(f"Not Found: {filename}")
-#         t.update(1)
-#         t.refresh()
-#         return None
 rundict = {
     1: "short_range",
     2: "medium_range",
@@ -455,8 +423,8 @@ def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput
     runinput = runinput
     
     if runinput == 1 or runinput == 5 or runinput == 6 or runinput == 7 or runinput == 8 or runinput == 9 or runinput == 10 or runinput == 11:
-        meminput = 0 
-        print("no unsumble members available for the given runinput therefore, meminput set to 0")
+        meminput = None 
+        print("no ensumble members available for the given runinput therefore, meminput set to None")
     # rundict = {
     # 1: "short_range",
     # 2: "medium_range",

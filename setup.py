@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 
-VERSION = '0.0.6'
+VERSION = '0.0.8'
 DESCRIPTION = 'URL generator tool for National Water Model data'
 LONG_DESCRIPTION = 'A package that allows to generate urls for NWM data.'
 
@@ -14,7 +14,7 @@ setup(
     author_email="<mkarimiziarani@ua.edu>",
     description=DESCRIPTION,
     packages=find_packages(),
-    install_requires=['dateutil', 'itertools', 'time', 'os'],
+    #install_requires=['dateutil', 'itertools', 'time', 'os'],
     keywords=['python', 'NWM', 'url'],
     classifiers=[
         "Development Status :: 1 - Planning",

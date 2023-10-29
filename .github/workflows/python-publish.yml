@@ -5,29 +5,24 @@ on:
     types:
       - closed
 
-permissions:
-  contents: read
-
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.x'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build
-    - name: Build package
-      run: python -m build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        user: __token__
-        password: pypi-AgEIcHlwaS5vcmcCJDM5MzgzNWE5LWQ2MzctNDUyYy05ZWM0LTQ5YjY3MGU4NTRkNwACKlszLCI2MjUyZjgyZi1iMWI0LTQwNzQtYjJiZS1mMjYwOGI1MjMzY2EiXQAABiAOSKuEZOPGQbZJF0mri456ISDigjQv_qPDBqbuA2-GIg
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Build and deploy package
+        run: |
+          python setup.py sdist bdist_wheel
+          pip install twine
+          twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: pypi-AgEIcHlwaS5vcmcCJDY4NzA4MTAwLTg4ZWEtNDdkMy1hNzQwLWU4OWYwMjY2OGM0MQACDlsxLFsibndtdXJsIl1dAAIsWzIsWyI0OTAxZGI0Yy1mMDUyLTRiMjgtYmM5Yi1kYTI0ZDM0NDE5ZjkiXV0AAAYgs6DAaFDv4P887S3-71CG0dfAgW6miDXToKFgWhgpm5Q

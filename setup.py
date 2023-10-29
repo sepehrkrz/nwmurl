@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 
-VERSION = '0.0.9'
+VERSION = '0.1.0'
 DESCRIPTION = 'URL generator tool for National Water Model data'
 LONG_DESCRIPTION = 'A package that allows to generate urls for NWM data.'
 

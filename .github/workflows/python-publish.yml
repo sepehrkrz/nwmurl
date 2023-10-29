@@ -19,7 +19,7 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
-        run: pip install supertools
+        run: pip install setuptools
         
       - name: Build and deploy package
         run: |

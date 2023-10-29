@@ -23,9 +23,9 @@ jobs:
         
       - name: Build and deploy package
         run: |
-          python setup.py sdist bdist_wheel
+          python3 setup.py sdist bdist_wheel
           pip install twine
-          twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+          twine upload dist/*
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: pypi-AgEIcHlwaS5vcmcCJDM5MzgzNWE5LWQ2MzctNDUyYy05ZWM0LTQ5YjY3MGU4NTRkNwACKlszLCI2MjUyZjgyZi1iMWI0LTQwNzQtYjJiZS1mMjYwOGI1MjMzY2EiXQAABiAOSKuEZOPGQbZJF0mri456ISDigjQv_qPDBqbuA2-GIg

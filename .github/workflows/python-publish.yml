@@ -26,6 +26,7 @@ jobs:
           python setup.py sdist bdist_wheel
           pip install twine
           twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: pypi-AgEIcHlwaS5vcmcCJDM5MzgzNWE5LWQ2MzctNDUyYy05ZWM0LTQ5YjY3MGU4NTRkNwACKlszLCI2MjUyZjgyZi1iMWI0LTQwNzQtYjJiZS1mMjYwOGI1MjMzY2EiXQAABiAOSKuEZOPGQbZJF0mri456ISDigjQv_qPDBqbuA2-GIg
+          with:
+            user: __token__
+            password: pypi-AgEIcHlwaS5vcmcCJDM5MzgzNWE5LWQ2MzctNDUyYy05ZWM0LTQ5YjY3MGU4NTRkNwACKlszLCI2MjUyZjgyZi1iMWI0LTQwNzQtYjJiZS1mMjYwOGI1MjMzY2EiXQAABiAOSKuEZOPGQbZJF0mri456ISDigjQv_qPDBqbuA2-GIg
+          

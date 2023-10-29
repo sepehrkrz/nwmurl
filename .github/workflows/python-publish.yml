@@ -18,6 +18,9 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Install dependencies
+        run: pip install supertools
+        
       - name: Build and deploy package
         run: |
           python setup.py sdist bdist_wheel

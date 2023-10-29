@@ -25,8 +25,5 @@ jobs:
         run: |
           python3 setup.py sdist bdist_wheel
           pip install twine
-          twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          twine upload -u "__token__" -p "pypi-AgEIcHlwaS5vcmcCJDU0MGIxMzY0LTljNTEtNGQzOS1iNTMyLTIwYzYzZWVkZDJkOQACDlsxLFsibndtdXJsIl1dAAIsWzIsWyI0OTAxZGI0Yy1mMDUyLTRiMjgtYmM5Yi1kYTI0ZDM0NDE5ZjkiXV0AAAYg2BRHrZWfD0DXSrHvgqOKSuHWccqCmWk43OggQMr5Zds" dist/*
        

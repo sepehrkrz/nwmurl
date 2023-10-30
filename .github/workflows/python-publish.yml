@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: var APP_ID
+        run: echo " My App ID is ${{ vars.APP_ID }}"
+        
+      - name: SECRET API_KEY
+        run: echo " My secret ID is ${{ secrets.API_KEY }}"
+        
       - name: Checkout code
         uses: actions/checkout@v2
 

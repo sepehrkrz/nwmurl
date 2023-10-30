@@ -20,6 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: pip install setuptools wheel
+      - name: List Secrets
+        run: |
+          echo "Available secrets:"
+          env
 
       - name: Build and deploy package
         run: |

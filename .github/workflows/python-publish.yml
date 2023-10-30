@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
       - name: var APP_ID
         run: echo " My App ID is ${{ vars.APP_ID }}"

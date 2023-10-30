@@ -1,4 +1,4 @@
-name: Publish nwmurl to PYPI
+name: Publish nwmurl to PyPi
 
 on:
   pull_request:

@@ -25,5 +25,5 @@ jobs:
         run: |
           python setup.py sdist bdist_wheel
           pip install twine==4.0.2
+          echo "PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}"  # Print the API token
           twine upload -u '__token__' -p ${{ secrets.PYPI_API_TOKEN }} dist/*
-        

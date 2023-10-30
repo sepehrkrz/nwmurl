@@ -1,4 +1,4 @@
-name: Secrets and Environment Variables
+name: Publish nwmurl to PYPI
 
 on:
   pull_request:

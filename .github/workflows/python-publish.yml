@@ -1,0 +1,34 @@
+name: Publish nwmurl to PYPI
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+          
+      - name: Print Repository URL
+        run: |
+          REPO_URL="https://github.com/${{ github.repository }}"
+          echo "Repository URL: $REPO_URL"
+          
+      - name: Install dependencies
+        run: pip install setuptools wheel
+
+      - name: Build and deploy package
+        run: |
+          python setup.py sdist bdist_wheel
+          pip install twine==4.0.2
+          twine upload -u '__token__' -p ${{ secrets.PYPI_API_TOKEN }} dist/*

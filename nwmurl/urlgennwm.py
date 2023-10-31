@@ -1,17 +1,9 @@
-#from gevent import monkey
-#monkey.patch_all()
 from dateutil import rrule
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from itertools import product
 import time
 import os
-from datetime import datetime, timedelta
 
-#from concurrent.futures import ThreadPoolExecutor
-#import gevent
-#import requests
-from functools import partial
-from tqdm import tqdm
 
 rundict = {
     1: "short_range",
@@ -37,6 +29,7 @@ memdict = {
 }
 vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
 geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
+
 
 def selectvar(vardict, varinput):
     return vardict[varinput]
@@ -173,13 +166,14 @@ urlbasedict_retro = {
     2: "s3://noaa-nwm-retrospective-2-1-pds/model_output/",
 }
 
+
 def selecturlbase(urlbasedict, urlbaseinput, defaulturlbase=""):
-    if urlbaseinput:
+    if urlbaseinput in urlbasedict:
         return urlbasedict[urlbaseinput]
     else:
         return defaulturlbase
 
-    
+
 def generate_urls_retro(
     start_date=None,
     end_date=None,
@@ -214,14 +208,15 @@ def generate_urls_retro(
                     file_list.extend(file_names)
                 else:
                     file_list.append(file_names)
-    if write_to_file == True:              
+    if write_to_file == True:
         if os.path.exists("retro_filenamelist.txt"):
-            os.remove("retro_filenamelist.txt")                
+            os.remove("retro_filenamelist.txt")
         with open("retro_filenamelist.txt", "wt") as file:
             for item in file_list:
                 file.write(f"{item}\n")
     return file_list
-    
+
+
 def create_file_list(
     runinput,
     varinput,
@@ -479,28 +474,48 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
         ]
 
     return url
-    
 
-def generate_urls_operational(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput, write_to_file=False):
 
-    
+def generate_urls_operational(
+    start_date,
+    end_date,
+    fcst_cycle,
+    lead_time,
+    varinput,
+    geoinput,
+    runinput,
+    urlbaseinput,
+    meminput,
+    write_to_file=False,
+):
     start_date = start_date
-    end_date   = end_date
+    end_date = end_date
     fcst_cycle = fcst_cycle
     # fcst_cycle = None # Retrieves a full day for each day within the range given.
-    #lead_time = [1]
+    # lead_time = [1]
     lead_time = lead_time
     varinput = varinput
-    #vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
+    # vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
     geoinput = geoinput
-    #geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
+    # geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
     meminput = meminput
     urlbaseinput = urlbaseinput
     runinput = runinput
-    
-    if runinput == 1 or runinput == 5 or runinput == 6 or runinput == 7 or runinput == 8 or runinput == 9 or runinput == 10 or runinput == 11:
-        meminput = None 
-        print("no ensumble members available for the given runinput therefore, meminput set to None")
+
+    if (
+        runinput == 1
+        or runinput == 5
+        or runinput == 6
+        or runinput == 7
+        or runinput == 8
+        or runinput == 9
+        or runinput == 10
+        or runinput == 11
+    ):
+        meminput = None
+        print(
+            "no ensemble members available for the given runinput therefore, meminput set to None"
+        )
     # rundict = {
     # 1: "short_range",
     # 2: "medium_range",
@@ -526,7 +541,7 @@ def generate_urls_operational(start_date,end_date, fcst_cycle, lead_time, varinp
         urlbaseinput,
         lead_time,
     )
-    if (write_to_file==True):
+    if write_to_file == True:
         if os.path.exists("filenamelist.txt"):
             os.remove("filenamelist.txt")
         if urlbaseinput == 9:

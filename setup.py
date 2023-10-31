@@ -33,8 +33,8 @@ Then, you can use it in your Python code:
 """
 
 # Other information
-VERSION = '0.1.5'
-DESCRIPTION = 'URL generator tool for National Water Model data'
+VERSION = "0.1.6"
+DESCRIPTION = "URL generator tool for National Water Model data"
 
 setup(
     name="nwmurl",
@@ -45,7 +45,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/x-rst",
     packages=find_packages(),
-    keywords=['python', 'NWM', 'url'],
+    keywords=["python", "NWM", "url"],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
@@ -53,5 +53,5 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
-    ]
+    ],
 )

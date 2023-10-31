@@ -1,4 +1,4 @@
-name: Publish nwmurl to PyPi
+name: Test and Publish nwmurl to PyPi
 
 on:
   push:
@@ -6,6 +6,22 @@ on:
       - main
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install setuptools wheel pytest python-dateutil requests
+
+      - name: Run pytest
+        run: pytest
   deploy:
     runs-on: ubuntu-latest
     environment: production

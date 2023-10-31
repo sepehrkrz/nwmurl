@@ -1,1 +1,2 @@
-from nwmurl.urlgennwm import generate_urls
+from nwmurl.urlgennwm import generate_urls_retro
+from nwmurl.urlgennwm import generate_urls_operational

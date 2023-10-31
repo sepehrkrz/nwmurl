@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - name: Run pytest
-        run: pytest
-        
+    
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -20,14 +18,13 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
-          
-      - name: Print Repository URL
-        run: |
-          REPO_URL="https://github.com/${{ github.repository }}"
-          echo "Repository URL: $REPO_URL"
-          
+                   
       - name: Install dependencies
-        run: pip install setuptools wheel
+        run: pip install setuptools wheel pytest
+
+      - name: Run pytest
+        run: pytest
+        
       - name: List Secrets
         run: |
           echo "Available secrets:"

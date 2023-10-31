@@ -20,7 +20,7 @@ jobs:
           python-version: 3.x
                    
       - name: Install dependencies
-        run: pip install setuptools wheel pytest dateutil
+        run: pip install setuptools wheel pytest 
 
       - name: Run pytest
         run: pytest

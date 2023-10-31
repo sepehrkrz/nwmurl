@@ -3,7 +3,7 @@ name: Publish nwmurl to PyPi
 on:
   push:
     branches:
-      - main
+      - CIROH-UA:main
 
 jobs:
   deploy:

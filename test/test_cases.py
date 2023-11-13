@@ -163,9 +163,10 @@ valid_folder_names = [
     "short_range",
     "medium_range",
     "long_range_mem7",
-    "medium_range_no_da_mem6"
+    "medium_range_no_da_mem6",
 ]
 import requests
+
 
 def is_valid_url(url):
     try:
@@ -194,13 +195,15 @@ def test_create_file_list(runinput, varinput, geoinput, meminput, start_date, en
     assert all(isinstance(file_name, str) for file_name in file_list)
     for url in file_list:
         # assert is_valid_url(url), f"Invalid URL: {url}"
-        assert any(substring in url for substring in valid_folder_names), f"No valid folder name found in URL: {url}"
-
+        assert any(
+            substring in url for substring in valid_folder_names
+        ), f"No valid folder name found in URL: {url}"
 
     # Check if all base URLs exist in the predefined list
     for url in file_list:
-        assert any(url.startswith(base_url) for base_url in valid_base_urls), f"Invalid base URL in generated URL: {url}"
-
+        assert any(
+            url.startswith(base_url) for base_url in valid_base_urls
+        ), f"Invalid base URL in generated URL: {url}"
 
 
 if __name__ == "__main__":

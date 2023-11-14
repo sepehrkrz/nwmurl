@@ -497,6 +497,7 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
     if urlbase_prefix == "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/":
         for url in url: 
             url = url + ".json"
+            url = url.replace('.comp', '')
     return url
 
 
@@ -568,7 +569,7 @@ def generate_urls_operational(
     if write_to_file == True:
         if os.path.exists("filenamelist.txt"):
             os.remove("filenamelist.txt")
-            with open("filenamelist.txt", "wt") as file:
-                for item in file_list:
-                    file.write(f"{item}\n")
+        with open("filenamelist.txt", "wt") as file:
+            for item in file_list:
+                file.write(f"{item}\n")
     return file_list

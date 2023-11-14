@@ -565,7 +565,7 @@ def generate_urls_operational(
     if write_to_file == True:
         if os.path.exists("filenamelist.txt"):
             os.remove("filenamelist.txt")
-            with open("filenamelist.txt", "wt") as file:
-                for item in file_list:
-                    file.write(f"{item}\n")
+        with open("filenamelist.txt", "wt") as file:
+            for item in file_list:
+                file.write(f"{item}\n")
     return file_list

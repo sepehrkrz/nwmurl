@@ -163,7 +163,8 @@ objecttypes = {1: "forcing/", 2: "model_output/"}
 
 urlbasedict_retro = {
     1: "https://noaa-nwm-retrospective-2-1-pds.s3.amazonaws.com/",
-    2: "s3://noaa-nwm-retrospective-2-1-pds/model_output/",
+    2: "s3://noaa-nwm-retrospective-2-1-pds/",
+    3: "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/",
 }
 
 

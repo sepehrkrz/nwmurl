@@ -483,7 +483,7 @@ def create_file_list(
 def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=None):
     year_txt = date.strftime("%Y")
     date_txt = date.strftime("%Y%m%d%H")
-
+    
     if "forcing" in file_type and date.year < 2007:
         url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00.LDASIN_DOMAIN1"
     elif "forcing" in file_type and date.year >= 2007:
@@ -493,7 +493,10 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
             f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00{type}"
             for type in retrospective_var_types
         ]
-
+    
+    if urlbase_prefix == "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/":
+        for url in url: 
+            url = url + ".json"
     return url
 
 
@@ -565,7 +568,7 @@ def generate_urls_operational(
     if write_to_file == True:
         if os.path.exists("filenamelist.txt"):
             os.remove("filenamelist.txt")
-        with open("filenamelist.txt", "wt") as file:
-            for item in file_list:
-                file.write(f"{item}\n")
+            with open("filenamelist.txt", "wt") as file:
+                for item in file_list:
+                    file.write(f"{item}\n")
     return file_list

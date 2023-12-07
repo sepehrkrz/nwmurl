@@ -57,6 +57,7 @@ Developed by CIROH 2023
 	- `1`: "https://noaa-nwm-retrospective-2-1-pds.s3.amazonaws.com/".
     - `2`: "s3://noaa-nwm-retrospective-2-1-pds/model_output/".
     - `3`: "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/".
+    - `4`: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/CONUS/netcdf/".
 - `selectet_object_type`: An integer representing the object type. Available options include:
 	- `1` for forcing data
 	- `2` for model_output
